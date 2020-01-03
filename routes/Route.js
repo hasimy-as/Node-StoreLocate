@@ -1,7 +1,9 @@
 import express from "express";
+import { Main, Admin } from "../controllers/Control";
 
-const route = express.Router();
+const Route = express.Router();
 
-route.get("/", (req, res) => res.end("hi!"));
+Route.route("/").get(Main);
+Route.route("/admin").get(Admin);
 
-export default route;
+export default Route;
