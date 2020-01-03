@@ -30,4 +30,11 @@ const storeSchema = new mongoose.Schema({
   }
 });
 
+// @geocode enabled
+// @locationCreate true
+storeSchema.pre("save", async next => {
+  const loc = await GeoCoder.geocode(this.address);
+  console.log(loc);
+});
+
 module.exports = mongoose.model("Store", storeSchema);
