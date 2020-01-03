@@ -1,0 +1,19 @@
+{
+  "name": "node-storelocate",
+  "version": "1.0.0",
+  "description": "Store Locator using Node.js, MongoDB, Express, and GeoJSON.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -r esm index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hasimy-as/Node-StoreLocate.git"
+  },
+  "author": "Hasimy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hasimy-as/Node-StoreLocate/issues"
+  },
+  "homepage": "https://github.com/hasimy-as/Node-StoreLocate#readme"
+}
