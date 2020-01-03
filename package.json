@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/hasimy-as/Node-StoreLocate/issues"
   },
-  "homepage": "https://github.com/hasimy-as/Node-StoreLocate#readme"
+  "homepage": "https://github.com/hasimy-as/Node-StoreLocate#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.4",
+    "node-geocoder": "^3.25.0"
+  }
 }

@@ -6,9 +6,9 @@ import path from "path";
 import cors from "cors";
 
 const app = express();
-const PORT = process.env.LOCAL_PORT || 3001;
+const PORT = process.env.PORT || 3001;
 
-dotenv.config({ path: "/config/configuration.env" });
+dotenv.config({ path: "./config/config.env" });
 
 connect();
 

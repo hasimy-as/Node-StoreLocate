@@ -1,17 +1,14 @@
 import mongoose from "mongoose";
 
-let MONGO_URI =
-  "mongodb+srv://hasimy-as:hasimy-as@store-locate-qzwi3.mongodb.net/storelocate?retryWrites=true&w=majority";
-
 const connect = async () => {
   try {
-    const conn = await mongoose.connect(MONGO_URI, {
+    const conn = await mongoose.connect(process.env.MONGO_URI, {
       useCreateIndex: true,
       useNewUrlParser: true,
       useFindAndModify: false,
       useUnifiedTopology: true
     });
-    console.log(`On to ${conn.connection.host}`);
+    console.log(`Database connected: ${conn.connection.host}`);
   } catch (err) {
     console.error(err);
     process.exit();
