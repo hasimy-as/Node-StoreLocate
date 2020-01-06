@@ -4,10 +4,14 @@ import GeoCoder from "../utils/GeoCoder";
 const storeSchema = new mongoose.Schema({
   storeId: {
     type: String,
-    required: [true, "Please enter a Store ID"],
+    required: [true, "Please add a store ID"],
     unique: true,
     trim: true,
-    maxlength: [10, "Store ID must be less than 10 characters."]
+    maxlength: [10, "Store ID must be less than 10 chars"]
+  },
+  address: {
+    type: String,
+    required: [true, "Please add an address"]
   },
   location: {
     type: {
@@ -15,14 +19,10 @@ const storeSchema = new mongoose.Schema({
       enum: ["Point"]
     },
     coordinates: {
-      type: [Number], //@array
+      type: [Number],
       index: "2dsphere"
     },
     formattedAddress: String
-  },
-  address: {
-    type: String,
-    required: [true, "Please add an address"]
   },
   createdAt: {
     type: Date,
@@ -30,11 +30,17 @@ const storeSchema = new mongoose.Schema({
   }
 });
 
-// @geocode enabled
-// @locationCreate true
-storeSchema.pre("save", async next => {
+// @geocode active
+storeSchema.pre("save", async function(next) {
   const loc = await GeoCoder.geocode(this.address);
-  console.log(loc);
-});
+  this.location = {
+    type: "Point",
+    coordinates: [loc[0].longitude, loc[0].latitude],
+    formattedAddress: loc[0].formattedAddress
+  };
 
+  // @address not save value
+  this.address = undefined;
+  next();
+});
 module.exports = mongoose.model("Store", storeSchema);
